@@ -1,0 +1,34 @@
+<h2><%= @issue.subject %></h2>
+
+<h3><%= l(:label_history) %></h3>
+
+<% form_tag({:action => "diff"}, :method => :post) do %>
+  <%= hidden_field_tag('issue_id', h(@issue.to_param)) %>
+<table class="list">
+<thead><tr>
+    <th>#</th>
+    <th></th>
+    <th></th>
+    <th><%= l(:field_updated_on) %></th>
+    <th><%= l(:field_author) %></th>
+    <th><%= l(:field_comments) %></th>
+</tr></thead>
+<tbody>
+<% show_diff = @versions.size > 1 %>
+<% line_num = 1 %>
+<% @versions.each do |ver| %>
+<tr class="<%= cycle("odd", "even") %>">
+    <td class="id"><%= link_to ver.version, show_issue_version_path(ver.issue, ver.id) %></td>
+    <td class="checkbox"><%= radio_button_tag('version', ver.version, (line_num==1), :id => "cb-#{line_num}", :onclick => "$('cbto-#{line_num+1}').checked=true;") if show_diff && (line_num < @versions.size) %></td>
+    <td class="checkbox"><%= radio_button_tag('version_from', ver.version, (line_num==2), :id => "cbto-#{line_num}") if show_diff && (line_num > 1) %></td>
+    <td align="center"><%= format_time(ver.journal.created_on) %></td>
+    <td><%= link_to_user ver.journal.user %></td>
+    <td><%=h ver.journal.notes %></td>
+</tr>
+<% line_num += 1 %>
+<% end %>
+</tbody>
+</table>
+<%= submit_tag l(:label_view_diff), :class => 'small' if show_diff %>
+<span class="pagination"><%= pagination_links_full @version_pages, @version_count, :page_param => :p %></span>
+<% end %>
