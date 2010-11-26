@@ -1,1 +1,5 @@
-<h2>IssueVersion#show</h2>
+<h2><%= link_to '#' + @issue.id.to_s + ' - ' + @issue.subject, @issue %> &gt;&gt; <%= link_to l(:issue_history_changes), show_issue_versions_path(@issue) %> &gt;&gt; <%= @issue_version.version.to_s %> </h2>
+
+<div class="wiki">
+<%= textilizable @issue_version, :text %>
+</div>

@@ -1,3 +1,5 @@
 # English strings go here for Rails i18n
 en:
-  my_label: "My label"
+  issue_history_new_issue: "Issue created"
+  issue_history_changes: "Description versions"
+

@@ -30,6 +30,14 @@ class IssueVersion < ActiveRecord::Base
     end
   end
 
+  def author
+    journal ? journal.user : issue.author
+  end
+
+  def updated_on
+    journal ? journal.created_on : issue.created_on
+  end
+
   # Returns the previous version or nil
   def previous
     @previous ||= WikiContent::Version.find(:first,
