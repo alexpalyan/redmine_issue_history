@@ -37,15 +37,15 @@ module RedmineIssueHistory
 
           end
           create_journal_without_description
-
           IssueVersion.create do |iv|
             iv.journal = @current_journal ? @current_journal : Journal.new
             iv.issue = self
             iv.text = description
             iv.version = new_version
           end
+        else
+          create_journal_without_description
         end
-        return true
       end
 
       def remove_issue_history
