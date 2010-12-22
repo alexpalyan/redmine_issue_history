@@ -1,0 +1,5 @@
+# Russian strings go here for Rails i18n
+ru:
+  issue_history_new_issue: "Задача создана"
+  issue_history_changes: "Версии описания задачи"
+
