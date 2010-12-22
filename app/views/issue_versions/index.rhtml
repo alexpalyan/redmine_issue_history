@@ -1,4 +1,4 @@
-<h2><%= link_to '#' + @issue.id.to_s + ' - ' + @issue.subject, @issue %> &gt;&gt; <%= l(:issue_history_changes) %>  </h2>
+<h2><%= link_to '#' + @issue.id.to_s + ' - ' + @issue.subject, {:controller => 'issues', :action => 'show', :id => @issue.id } %> &gt;&gt; <%= l(:issue_history_changes) %>  </h2>
 
 <h3><%= l(:label_history) %></h3>
 
