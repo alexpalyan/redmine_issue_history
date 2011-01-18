@@ -1,0 +1,5 @@
+# German strings go here for Rails i18n
+de:
+  issue_history_new_issue: "Ticket erstellt created"
+  issue_history_changes: "Ticket Versionen"
+
