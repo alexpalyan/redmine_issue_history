@@ -1,0 +1,4 @@
+# Italian strings go here for Rails i18n
+it:
+  issue_history_new_issue: "Segnalazione creata"
+  issue_history_changes: "Versioni della descrizione"
