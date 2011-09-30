@@ -5,7 +5,7 @@
   // <!--
   var div = document.getElementById('issue-history-link');
   var link = div.getElementsByTagName('a')[0];
-  var menuDiv = document.getElementById('content').getElementsByTagName('div')[0];
+  var menuDiv = document.getElementById('content').getElementsByClassName('contextual', 'div')[0];
   div.removeChild(link);
   menuDiv.insertBefore(link, menuDiv.childNodes[menuDiv.childNodes.length-2]);
   // -->

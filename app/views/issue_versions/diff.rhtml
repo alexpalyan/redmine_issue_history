@@ -8,8 +8,12 @@
 <em>(<%= @diff.content_to.author ? @diff.content_to.author.name : "anonyme" %>, <%= format_time(@diff.content_to.updated_on) %>)</em>
 </p>
 
+<% if Redmine::VERSION::STRING < "1.2.0" %>
 <hr />
 
+<%= html_diff(@diff) %>
+<% else %>
 <div class="text-diff">
 <%= simple_format_without_paragraph @diff.to_html %>
 </div>
+<% end %>
