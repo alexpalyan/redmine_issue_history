@@ -27,6 +27,14 @@ module RedmineIssueHistory
         if @issue_before_change.nil? || description != @issue_before_change.description
           old_version = issue_versions.maximum('version')
           new_version = old_version ? old_version + 1 : 1;
+          if @current_journal && Redmine::VERSION::STRING < "1.2.0"
+            # attributes changes
+            @current_journal.details << JournalDetail.new(:property => 'attr',
+                                                          :prop_key => 'description',
+                                                          :old_value => old_version,
+                                                          :value => new_version)
+
+          end
         end
         create_journal_without_description
         if new_version
