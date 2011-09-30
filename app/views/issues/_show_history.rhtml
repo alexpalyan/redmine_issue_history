@@ -1,1 +1,12 @@
-<%= link_to(l(:label_history), show_issue_versions_path(@issue.id), :class => 'icon icon-history') %>
+<div id="issue-history-link">
+  <%= link_to(l(:label_history), show_issue_versions_path(@issue.id), :class => 'icon icon-history') %>
+</div>
+<script type="text/javascript">
+  // <!--
+  var div = document.getElementById('issue-history-link');
+  var link = div.getElementsByTagName('a')[0];
+  var menuDiv = document.getElementById('content').getElementsByTagName('div')[0];
+  div.removeChild(link);
+  menuDiv.insertBefore(link, menuDiv.childNodes[menuDiv.childNodes.length-2]);
+  // -->
+</script>
